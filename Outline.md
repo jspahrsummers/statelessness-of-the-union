@@ -11,6 +11,7 @@
         - Subjects
         - Multicasting
         - Replaying
+        - This problem exists in Rx, RxJava, and RxSwift too
     - `RACCommand`
     - `-flattenMap:` preference vs. `-concat` and `-switchToLatest`
     - “Too much magic”
