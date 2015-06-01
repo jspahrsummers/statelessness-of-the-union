@@ -1,0 +1,37 @@
+- Introduction
+    - Who am I?
+    - About this event
+- What is ReactiveCocoa?
+    - Not just KVO
+    - Not just data binding
+    - Not just futures
+- Problems with ReactiveCocoa 2
+    - “WTF is in this signal?”
+    - “Hot” and “cold” signals
+        - Subjects
+        - Multicasting
+        - Replaying
+    - `RACCommand`
+    - `-flattenMap:` preference vs. `-concat` and `-switchToLatest`
+    - “Too much magic”
+    - Unexpected errors (e.g., in property binding)
+- A wild Swift appears
+    - Parameterized types
+    - Value types
+    - No macros
+    - Less dynamic programming (KVC, KVO, `-rac_signalForSelector:`)
+- How ReactiveCocoa 3 solves these problems (a.k.a. a walk through the changelog)
+    - Parameterized values
+    - Parameterized errors and `NoError`
+    - `Signal` and `SignalProducer` split
+        - `Signal.pipe` instead of subjects
+        - `SignalProducer.buffer` instead of replaying
+        - `startWithSignal` instead of multicasting
+    - `Action` instead of commands
+    - `flatMap`, `flatten` strategy
+    - `PropertyType`
+- Remaining work before 3.0
+    - Long-form documentation
+- Contributors
+    - Recognizing significant contributions to RAC 3
+    - Interested in contributing?
