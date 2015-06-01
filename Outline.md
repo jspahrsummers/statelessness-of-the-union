@@ -30,6 +30,10 @@
     - `Action` instead of commands
     - `flatMap`, `flatten` strategy
     - `PropertyType`
+- Simple vs. easy
+    - There's probably nothing I've referenced more in the past year
+    - RAC 2 is neither easy nor simple
+    - Hopefully, RAC 3 is simple (although it's still not always easy)
 - Remaining work before 3.0
     - Long-form documentation
 - Contributors
