@@ -1,16 +1,18 @@
 build-lists: true
 
-# ReactiveCocoa
-# [fit] **Statelessness**
-# of the Union
+# [fit] ReactiveCocoa
+# [fit] **“Statelessness”**
+# [fit] of the Union
 
 ---
 
-# [fit] _@jspahrsummers_
+# [fit] @jspahrsummers
 
 ---
 
-# About RACDC
+# [fit] ReactiveCocoa
+# [fit] Developers Conference
+# (RACDC)
 
 ---
 
@@ -19,24 +21,26 @@ build-lists: true
 
 ---
 
-# Not just _KVO_
+# [fit] Not just **KVO**
 
 ---
 
-# Not just _bindings_
+# [fit] Not just **bindings**
 
 ---
 
-# Not just _futures_
+# [fit] Not just **futures**
 
 ---
 
-# What, then?
+# [fit] **Signals**
+# [fit] unify all of these paradigms
+# (and more)
 
 ---
 
-# Problems with
-# ReactiveCocoa 2
+# [fit] **Problems**
+# [fit] with ReactiveCocoa 2
 
 ---
 
@@ -44,71 +48,82 @@ build-lists: true
 
 ---
 
-# “Hot” and “cold” signals
+![fill](Resources/hot-n-cold.jpg)
 
 ---
 
-# Subjects
+# [fit] Subjects
+
+^ I ran out of good images here.
 
 ---
 
-# Multicasting
+# [fit] Multicasting
 
 ---
 
-# Replaying
+# [fit] Replaying
 
 ---
 
-# How do other Rx implementations solve this problem?
-# _(They don’t.)_
+# [fit] How do **Rx implementations** solve these problems?
+
+- They don’t
+
+^ After all, RAC was originally inspired by Rx, and all of these concepts
+originate from it, so Rx must have a solution, right?
 
 ---
 
-# `RACCommand`
+# [fit] `RACCommand`
 
 ---
 
-# `-flattenMap:`
+# [fit] `-flattenMap:`
 
 ^ Which is overemphasized versus `-concat` and `-switchToLatest`.
 
 ---
 
-> Too much magic!
+> ReactiveCocoa has **too much magic**!
 -- the internet
 
 ---
 
-# Unpredictable error events
+# [fit] **Unpredictable**
+# [fit] error events
 
 ^ e.g., in property binding
 
 ---
 
-# [fit] A wild Swift appears!
+# [fit] **Swift**
+
+![fit](Resources/appears.jpg)
 
 ---
 
-# Parameterized types
+# [fit] **Parameterized** types
+# (generics)
 
 ---
 
-# Value types
+# [fit] **Value** types
+# (structs, enums)
 
 ---
 
-# No macros
+# [fit] No **macros**
 
 ---
 
-# Less dynamic programming
+# [fit] Less **dynamic programming**
 
 ^ KVC, KVO, `-rac_signalForSelector:`
 
 ---
 
-# RAC 3
+# [fit] :tada: **ReactiveCocoa 3** :tada:
 
 ---
 
@@ -121,7 +136,9 @@ build-lists: true
 
 ---
 
-# `Signal` and `SignalProducer` split
+# [fit] **Signals**
+# and
+# [fit] **Signal Producers**
 
 ---
 
@@ -149,29 +166,40 @@ build-lists: true
 
 ---
 
-# Simple vs. easy
+# [fit] **EASY**
+# [fit] familiar
+# [fit] approachable
 
-![autoplay fit](Resources/decomplect-it.gif)
-
-^ There's probably nothing I've referenced more in the past year
+![autoplay right](Resources/easy.gif)
 
 ---
 
-# RAC 2 is neither
-# [fit] easy
+# [fit] **SIMPLE**
+# [fit] separate concerns
+# [fit] less complex
+
+![autoplay right](Resources/decomplect-it.gif)
+
+^ There's probably nothing I've referenced more in the past year.
+
+---
+
+# [fit] ReactiveCocoa 2 is _neither_
+# [fit] **easy**
 # nor
-# [fit] simple
+# [fit] **simple**
 
 ---
 
-# RAC 3 is simple
+# [fit] ReactiveCocoa 3 is
+# [fit] **simple**
 # (hopefully)
 
 ^ But still not always easy.
 
 ---
 
-# [fit] Remaining work
+# Remaining work
 
 - Long-form documentation
 
@@ -179,7 +207,7 @@ build-lists: true
 
 ---
 
-# [fit] Contributors
+# Contributors
 
 TODO: Significant contributors to RAC 3
 
