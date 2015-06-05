@@ -143,29 +143,36 @@ build-lists: true
 
 ![fit](Resources/appears.jpg)
 
+^ Of course, while we were already trying to solve all these problems, Swift happened. The new language brought major changes of its own.
+
 ---
 
 # [fit] **Parameterized** types
 # (generics)
 
----
-
-# [fit] **Value** types
-# (structs, enums)
+^ Swift's stronger type system allows us to answer the question "what's in the box?" very clearly and succinctly. Problem solved!
 
 ---
 
 # [fit] No **macros**
 
+^ Swift currently has no metaprogramming facilities. So even if we wanted to, we couldn't continue using things like macros to make the framework easier to use.
+
+^ Problem… solved… I guess?
+
 ---
 
 # [fit] Less **dynamic programming**
 
-^ KVC, KVO, `-rac_signalForSelector:`
+^ Similarly, Swift makes features like KVC and KVO more difficult. It doesn't obsolete them, per se, but it's definitely a big impedance mismatch.
+
+^ It's easier for RAC to just avoid those features as much as possible now. That's another "problem" we don't have to worry about anymore.
 
 ---
 
 # [fit] :tada: **ReactiveCocoa 3** :tada:
+
+^ After Swift was released, we feverishly started work on a Swift API for ReactiveCocoa. With enough time, and a few major rewrites, this developed into the RAC 3 beta that's available today.
 
 ---
 
