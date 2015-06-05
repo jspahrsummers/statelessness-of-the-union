@@ -84,13 +84,27 @@ build-lists: true
 # [fit] **Problems**
 # [fit] with ReactiveCocoa 2
 
+^ Before we could even start work on ReactiveCocoa 3, we had to identify the biggest problems in version 2 that needed fixing.
+
 ---
 
 ![](Resources/whats-in-the-box.jpg)
 
+^ First and foremost is the lack of type information. RAC 2, being written in Objective-C, just has this one `RACSignal` type, and you can never tell what kind of values it's going to send—just like `NSArray` or `NSDictionary`.
+
+^ This has probably been responsible for more bugs than anything else in RAC.
+
 ---
 
 ![fill](Resources/hot-n-cold.jpg)
+
+^ Chances are, if you've heard signals referred to as "hot" or "cold," it was probably extraordinarily confusing. The difference between these terms is how the signal behaves when you "subscribe" (attach) to it.
+
+^ A "hot" signal always sends the exact same events to all of its subscribers at the same time. When you "subscribe," you're really just observing this existing event stream, and your subscription to it doesn't start or stop it. For example, button taps are a hot signal, because the button will generate events whether you're listening or not.
+
+^ A "cold" signal _starts_ when subscribed to, and may send different events each time. This one is more like a future or a promise, because you can run it to do some work and receive a result.
+
+^ The problem in ReactiveCocoa 2 is that _you can't tell these apart_. Unless a method or property's documentation calls out which kind of signal it creates, you really have no idea whether your subscription will have side effects or not.
 
 ---
 
