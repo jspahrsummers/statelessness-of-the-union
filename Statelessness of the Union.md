@@ -209,7 +209,78 @@
 
 ---
 
-# `Action` instead of `RACCommand`
+# **Signals** and **Signal Producers**
+
+```swift
+let producer = timer(1, onScheduler: QueueScheduler())
+
+let disposable = producer.start(next: { date in
+    println("First timer fired at \(date)")
+})
+
+producer.startWithSignal { signal, signalDisposable in
+    signal.observe(next: { date in
+        println("Second timer fired at \(date)")
+    })
+}
+```
+
+^ This example shows a `SignalProducer` representing a timer that fires once every second, and then two different ways we can start that timer.
+
+^ By starting the producer _twice_ here, we've started two timers. If we never started the producer, there would be no timers running.
+
+^ The disposable objects you see here can be used to _cancel_ that particular invocation of the producer. They have no effect on other invocations.
+
+---
+
+# **Signals** and **Signal Producers**
+
+```swift
+let producer = timer(1, onScheduler: QueueScheduler())
+
+producer.startWithSignal { signal, signalDisposable in
+    signal.observe(next: { date in
+        println("Timer fired at \(date)")
+    })
+
+    signal.observe(anotherObserver)
+}
+```
+
+^ Using the `startWithSignal` method, you can also observe the signal multiple times (for example, to handle its events and also forward them somewhere else).
+
+^ As mentioned before, adding and removing observers doesn't affect the signal, so this doesn't change the behavior of the started timer at all.
+
+---
+
+# [fit] **`Action`**
+# (instead of `RACCommand`)
+
+^ Actions, new in RAC 3, are very similar to commands, but with much-needed simplifications.
+
+^ Most notably, actions can only be executed serially, and errors get no special treatment.
+
+---
+
+# **Actions**
+
+```swift
+let searchAction = Action(enabledIf: hasText) { text in
+    let resultsProducer = APIClient.searchText(text)
+    return resultsProducer
+}
+
+searchAction.values.observe(next: { result in
+    println("Search result: \(result)")
+})
+
+let searchCatsProducer = searchAction.apply("cats")
+searchCatsProducer.start()
+```
+
+^ Here's a contrived example of creating, observing, and starting an action.
+
+^ As you can see, it's ultimately just a wrapper around SignalProducers that enforces serial execution and allows you to observe the values "from the outside."
 
 ---
 
