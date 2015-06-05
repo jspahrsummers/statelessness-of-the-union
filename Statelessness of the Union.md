@@ -341,7 +341,7 @@ officially reach 3.0. It should be pretty soon now!
 - **Dave Lee** (@kastiglione)
 - **Andy Matuschak** (@andymatuschak)
 - **Nacho Soto** (@NachoSoto)
-- **Javi Soto** (@JaviSoto)
+- **Javi Soto** (@Javi)
 - **Syo Ikeda** (@ikesyo)
 - **Neil Pankey** (@neilpa)
 - … many more!
