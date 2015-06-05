@@ -109,47 +109,33 @@ build-lists: true
 ---
 
 # [fit] Subjects
+# [fit] Multicasting
+# [fit] Replaying
 
 ^ I ran out of good images here.
 
----
+^ These are some examples of how Rx implementations "solve" the problem of hot and cold signals. I won't go into too much detail about each, but suffice it to say that they allow you to convert between hot/cold signals, or even split the difference and create a "warm" signal.
 
-# [fit] Multicasting
-
----
-
-# [fit] Replaying
-
----
-
-# [fit] How do **Rx implementations** solve these problems?
-
-- They don’t
-
-^ After all, RAC was originally inspired by Rx, and all of these concepts
-originate from it, so Rx must have a solution, right?
+^ Although RAC has these tools as well, they've always felt like workarounds for a more fundamental problem.
 
 ---
 
 # [fit] `RACCommand`
 
----
+^ I'm not sure how many people use `RACCommand`, but if you have, you're probably well-aware of how much trouble it can be.
 
-# [fit] `-flattenMap:`
+^ Commands are intended to trigger work (like a network request) when an action is taken in the UI, then send any results as a signal. They're really useful in bindings, because you can set a command on a UI control just like you would set its target and action, and then observe the command elsewhere to obtain the results.
 
-^ Which is overemphasized versus `-concat` and `-switchToLatest`.
+^ Unfortunately, they're also overcomplicated, with a rarely-used concurrent execution feature, confusing error handling, and a dependency upon the main thread (which makes unit testing especially hard).
 
 ---
 
 > ReactiveCocoa has **too much magic**!
 -- the internet
 
----
+^ Finally, the most abstract complaint we hear is that RAC is simply "too magical," what with its macros and KVO and… that's it, I guess?
 
-# [fit] **Unpredictable**
-# [fit] error events
-
-^ e.g., in property binding
+^ Although we've always offered "non-magical" ways to do the same thing, this has been a turnoff for potential users, so it is a problem for adoption.
 
 ---
 
@@ -252,6 +238,11 @@ originate from it, so Rx must have a solution, right?
 # (hopefully)
 
 ^ But still not always easy.
+
+---
+
+> Dr. **Changelog**, MD
+-- @joshaber
 
 ---
 
