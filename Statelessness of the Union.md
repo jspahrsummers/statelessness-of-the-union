@@ -284,7 +284,27 @@ searchCatsProducer.start()
 
 ---
 
-# `PropertyType`
+# [fit] **`PropertyType`**
+
+^ To replace uses of KVC and KVO, RAC 3 introduces its own concept of "properties." Properties always have a value, and always allow observation of their changes. Some concrete property types allow the value to be changed explicitly, but this is not a requirement.
+
+---
+
+# **`PropertyType`**
+
+```swift
+let text = MutableProperty("0")
+
+text.producer.start(next: { string in
+    println("Property value is now: \(string)")
+})
+
+text <~ timer(1, onScheduler: QueueScheduler())
+        |> scan(0) { counter, _ in counter + 1 }
+        |> map { counter in toString(counter) }
+```
+
+^ This example creates a counter that increments itself every second. We observe the changes and log every value of the property to the console.
 
 ---
 
