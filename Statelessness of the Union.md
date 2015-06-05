@@ -1,5 +1,3 @@
-build-lists: true
-
 # [fit] **ReactiveCocoa**
 # [fit] **Developers Conference**
 # (RACDC)
@@ -263,8 +261,29 @@ build-lists: true
 
 # Contributors
 
-TODO: Significant contributors to RAC 3
+- **Dave Lee** (@kastiglione)
+- **Andy Matuschak** (@andymatuschak)
+- **Nacho Soto** (@NachoSoto)
+- **Javi Soto** (@JaviSoto)
+- **Syo Ikeda** (@ikesyo)
+- **Neil Pankey** (@neilpa)
+- … many more!
+
+^ We've had a ton of amazing contributions to RAC, from more people than I could ever hope to list on one slide.
+
+^ I especially want to recognize these folks for their help in designing and shepherding ReactiveCocoa 3—without them, we wouldn't be nearly as far along as we are today.
+
+^ My sincere thanks to everyone who has contributed! It's been really great to see open source working.
 
 ---
 
-# Interested in contributing?
+# [fit] **Interested in contributing?**
+# [fit] Join Slack by emailing justin@jspahrsummers.com
+
+^ If any of you are interested in contributing as well, in any capacity, we'd more than welcome the help! Anything is valuable, including bug fixes, documentation help, answering issues and questions from others, etc.
+
+^ If you're unsure how best to contribute, or would just like to chat with other
+collaborators, we're happy to add you to our Slack channel. Just email me (at
+this address here), and I'll send you an invite.
+
+^ Thanks everyone!
