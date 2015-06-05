@@ -365,15 +365,15 @@ text <~ timer(1, onScheduler: QueueScheduler())
 > Dr. **Changelog**, MD
 -- @joshaber
 
+^ If you want to learn more, the [ReactiveCocoa repository](https://github.com/ReactiveCocoa/ReactiveCocoa) contains a [CHANGELOG.md](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/ad1fd34561d3f2f42e0feb420ace5de321906b78/CHANGELOG.md) file at its root, which details all of these changes (and some others I haven't covered), and presents a more in-depth rationale for each one.
+
 ---
 
 # Remaining work for 3.0
 
 - **Long-form documentation**
-- That’s it!
 
-^ That's really the only major piece we have to take care of before RAC can
-officially reach 3.0. It should be pretty soon now!
+^ That's it! That's really the only major piece we have to take care of before RAC can officially release 3.0. It should be pretty soon now!
 
 ---
 
