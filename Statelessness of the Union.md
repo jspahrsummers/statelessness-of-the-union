@@ -174,12 +174,24 @@
 
 ---
 
-# Parameterized values
+# [fit] **`Signal<T,E>`**
+# (parameterized values _and_ errors)
+
+^ This denotes a signal that can send values of type T, and that may error with an error of type E.
 
 ---
 
-# Parameterized errors
-# `NoError`
+# [fit] `Signal<String, CarthageError>`
+
+^ This is a signal which will send zero or more strings. It may send a `CarthageError` (and terminate), but it doesn't have to.
+
+---
+
+# [fit] `Signal<Int, NoError>`
+
+^ This is a signal which will send zero or more integers. This signal _cannot_ error, and trying to do so is a compile-time error!
+
+^ `NoError` is useful for guaranteeing that you don't need to handle error events in certain cases (like property binding).
 
 ---
 
@@ -187,25 +199,17 @@
 # and
 # [fit] **Signal Producers**
 
----
+^ RAC 3 splits the venerable `RACSignal` into two different types:
 
-# `Signal.pipe` instead of subjects
+^ Signals are like a "hot" RACSignal. They send the same events to all observers at the same time, and observing a signal doesn't trigger any extra work.
 
----
+^ Signal producers are like a "cold" RACSignal. _Starting_ signal producer will create a unique signal, which may send different events than other created signals. Starting a signal producer may also involve side effects (like kicking off a network request).
 
-# `SignalProducer.buffer` instead of replaying
-
----
-
-# `startWithSignal` instead of multicasting
+^ This split means that side effects are now predictable _in the type system_, which makes RAC 3 code simpler.
 
 ---
 
 # `Action` instead of `RACCommand`
-
----
-
-# `flatMap` and `flatten` “strategies”
 
 ---
 
