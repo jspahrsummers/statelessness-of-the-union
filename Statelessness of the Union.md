@@ -308,21 +308,36 @@ text <~ timer(1, onScheduler: QueueScheduler())
 
 ---
 
-# [fit] **EASY**
+# The theme is
+# [fit] **simplicity**
+
+^ All of these changes have been made in the name of simplicity. But before we can evaluate whether we've achieved that goal, let's talk about what it means.
+
+---
+
+# [fit] **EASY**[^1]
 # [fit] familiar
 # [fit] approachable
 
 ![autoplay right](Resources/easy.gif)
 
+[^1]: See Rich Hickey’s talk, “[Simple Made Easy](http://www.infoq.com/presentations/Simple-Made-Easy)”
+
+^ To talk about simplicity, we first need to talk about ease. Something is _easy_ if it is familiar or approachable.
+
+^ Objective-C is _easy_ for most C programmers, because it's a very approachable step upward. Bindings and (to some extent) futures are also _easy_.
+
 ---
 
-# [fit] **SIMPLE**
+# [fit] **SIMPLE**[^1]
 # [fit] separate concerns
 # [fit] less complex
 
 ![autoplay right](Resources/decomplect-it.gif)
 
-^ There's probably nothing I've referenced more in the past year.
+^ But simplicity means something different. Simplicity is the _opposite_ of complexity. Since complexity means intertwined concepts or concerns, you attain simplicity when you appropriately separate different concepts or concerns.
+
+^ The "Unix philosophy" is an example of simplicity: tons of small utilities that can be composed together in whichever way, sometimes less _easy_ because the pattern isn't as familiar.
 
 ---
 
@@ -331,13 +346,19 @@ text <~ timer(1, onScheduler: QueueScheduler())
 # nor
 # [fit] **simple**
 
+^ Unfortunately, RAC version 2 kinda failed on both of these counts. While we certianly tried to make it as easy as possible, there's still a really steep learning curve, and the patterns are very unfamiliar to many Cocoa programmers.
+
+^ It's also not simple. All of the problems that I mentioned earlier are examples of complexity that RAC 2 is exposing.
+
 ---
 
 # [fit] ReactiveCocoa 3 is
 # [fit] **simple**
 # (hopefully)
 
-^ But still not always easy.
+^ Our fixes for RAC 3 have focused primarily on simplicity.
+
+^ There will still be a learning curve (and thus it may still not be "easy"), partly because the paradigm is inherently so different from what we're used to, but hopefully the complexities of version 2 have been eliminated.
 
 ---
 
