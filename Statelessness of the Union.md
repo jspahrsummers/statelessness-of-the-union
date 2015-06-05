@@ -251,11 +251,13 @@
 
 ---
 
-# Remaining work
+# Remaining work for 3.0
 
-- Long-form documentation
+- **Long-form documentation**
+- That’s it!
 
-^ Here's what's left before RAC officially hits 3.0.
+^ That's really the only major piece we have to take care of before RAC can
+officially reach 3.0. It should be pretty soon now!
 
 ---
 
