@@ -4,7 +4,7 @@
 
 ^ Hello, everyone, and welcome to the ReactiveCocoa Developers "Conference!" This "conference" dates back to a couple years ago, when (thanks to Scott Perry) we just did a simple Q&A at Square HQ.
 
-^ Last year, we held it at GitHub, added some talks, and got a real A/V setup. We're doing some new things this year too, with the "lab time." If you're currentlyusing RAC and would like in-person troubleshooting, code review, or pair programming, we'll be happy to help you out a little later!
+^ Last year, we held it at GitHub, added some talks, and got a real A/V setup. We're doing some new things this year too, with the "lab time." If you're currently using RAC and would like in-person troubleshooting, code review, or pair programming, we'll be happy to help you out a little later!
 
 ^ (Talk a bit more about the specific night or day event)
 
@@ -375,6 +375,8 @@ text <~ timer(1, onScheduler: QueueScheduler())
 
 ^ That's it! That's really the only major piece we have to take care of before RAC can officially release 3.0. It should be pretty soon now!
 
+^ Note that 3.0 may not contain Swift versions of our UIKit and AppKit extensionsupon release, since those can come later. However, if there's a particular one you want, please submit a pull request and we'd be happy to include it!
+
 ---
 
 # Contributors
@@ -384,7 +386,7 @@ text <~ timer(1, onScheduler: QueueScheduler())
 - **Nacho Soto** (@NachoSoto)
 - **Javi Soto** (@Javi)
 - **Syo Ikeda** (@ikesyo)
-- **Neil Pankey** (@neilpa)
+- **Neil Pankey** (@npankey)
 - … many more!
 
 ^ We've had a ton of amazing contributions to RAC, from more people than I could ever hope to list on one slide.
