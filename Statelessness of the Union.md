@@ -215,12 +215,12 @@
 let producer = timer(1, onScheduler: QueueScheduler())
 
 let disposable = producer.start(next: { date in
-    println("First timer fired at \(date)")
+    print("First timer fired at \(date)")
 })
 
 producer.startWithSignal { signal, signalDisposable in
     signal.observe(next: { date in
-        println("Second timer fired at \(date)")
+        print("Second timer fired at \(date)")
     })
 }
 ```
@@ -240,7 +240,7 @@ let producer = timer(1, onScheduler: QueueScheduler())
 
 producer.startWithSignal { signal, signalDisposable in
     signal.observe(next: { date in
-        println("Timer fired at \(date)")
+        print("Timer fired at \(date)")
     })
 
     signal.observe(anotherObserver)
@@ -271,7 +271,7 @@ let searchAction = Action(enabledIf: hasText) { text in
 }
 
 searchAction.values.observe(next: { result in
-    println("Search result: \(result)")
+    print("Search result: \(result)")
 })
 
 let searchCatsProducer = searchAction.apply("cats")
@@ -296,12 +296,12 @@ searchCatsProducer.start()
 let text = MutableProperty("0")
 
 text.producer.start(next: { string in
-    println("Property value is now: \(string)")
+    print("Property value is now: \(string)")
 })
 
 text <~ timer(1, onScheduler: QueueScheduler())
         |> scan(0) { counter, _ in counter + 1 }
-        |> map { counter in toString(counter) }
+        |> map { counter in String(counter) }
 ```
 
 ^ This example creates a counter that increments itself every second. We observe the changes and log every value of the property to the console.
