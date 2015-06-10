@@ -2,9 +2,9 @@
 # [fit] **Developers Conference**
 # (RACDC)
 
-^ Hello, everyone, and welcome to the ReactiveCocoa Developers "Conference!" This "conference" dates back to a couple years ago, when (thanks to Scott Perry) we just did a simple Q&A at Square HQ.
+^ Hello and welcome to the ReactiveCocoa Developers "Conference!" This dates back to a couple years ago, when Scott Perry (@numist) invited us to do a Q&A at Square.
 
-^ Last year, we held it at GitHub, added some talks, and got a real A/V setup. We're doing some new things this year too, with the "lab time." If you're currently using RAC and would like in-person troubleshooting, code review, or pair programming, we'll be happy to help you out a little later!
+^ Last year, we held it at GitHub, where we added talks and got A/V help. We're doing some new things this year too, with the "lab time." If you're currently using RAC and want in-person troubleshooting, code review, or pair programming, we'll happily help!
 
 ^ (Talk a bit more about the specific night or day event)
 
@@ -12,7 +12,7 @@
 
 # [fit] @jspahrsummers
 
-^ I'm Justin Spahr-Summers, or @jspahrsummers on the internet, and I'm one of the main contributor on ReactiveCocoa. Josh Abernathy (awkward point and stare), or @joshaber, started the project and is another main contributor.
+^ I'm Justin Spahr-Summers, or @jspahrsummers on the internet, and I'm one of the main contributors on ReactiveCocoa. Josh Abernathy (awkward point and stare), or @joshaber, started the project and is another main contributor.
 
 ^ We've got more RAC contributors here tonight as well, but I'll let everyone introduce themselves when we get to the Q&A portion.
 
@@ -39,31 +39,31 @@
 
 # [fit] Not just **KVO**
 
-^ One of the most common things we've heard said about ReactiveCocoa 2 is that "it's KVO done right." And while we certainly appreciate that sentiment, it's not the full story.
+^ One of the most common things we've heard about RAC 2 is that it's "KVO done right." And while we appreciate that, it's not the full story.
 
-^ This really reached its head when Swift came out, and we got an onslaught of questions asking stuff like "what's going to happen to RAC now that KVO isn't supported anymore?"
+^ This really came to a head with Swift, when we got an onslaught of questions like "what's going to happen to RAC now that KVO isn't supported anymore?"
 
-^ The truth is, KVO has always been a _means to an end_ for RAC. It's a built-in way to capture changes over time, so it made sense to take advantage of it, but the use of RAC has never required KVO.
+^ The truth is, KVO has always been a **means to an end** for RAC. It's Cocoa's built-in way to capture changes over time, so it made sense to take advantage of it, but the use of RAC has never required KVO.
 
 ---
 
 # [fit] Not just **bindings**
 
-^ Another common one we heard is that ReactiveCocoa is "bindings for iOS." Putting aside the fact that we use it on the Mac as well, this too is only part of the story.
+^ Another one we hear is that RAC is "bindings for iOS." Aside from the fact that it works on the Mac as well, this is only part of the story too.
 
-^ RAC is often perceived this way because it makes data binding really easy, especially as part of the Model-View-ViewModel pattern.
+^ RAC is seen this way because it makes data binding really easy, especially as part of the MVVM pattern.
 
-^ But honestly, from [my perspective](https://twitter.com/jspahrsummers/status/582298982992367616), bindings are one of the least interesting applications of RAC, and I think it's great that there are more and more other libraries offering them now.
+^ But honestly, from [my perspective](https://twitter.com/jspahrsummers/status/582298982992367616), bindings are one of the least interesting uses of RAC, and I think it's great that there's a growing number of libraries offering them now.
 
 ---
 
 # [fit] Not just **futures**
 
-^ Finally, people often ask why ReactiveCocoa is valuable, when there are plenty of futures/promises libraries that are smaller and ostensibly easier to use.
+^ Finally, people often ask why RAC is valuable when there are futures/promises libraries that are smaller and ostensibly easier to use.
 
-^ In my (admittedly biased) opinion, streams are a strictly more powerful superset of futures, because they permit any number of values and have more flexible operators.
+^ In my (biased) opinion, streams are a strictly more powerful superset of futures, because they permit any number of values and have more flexible operators.
 
-^ Still, I agree: if _all you want_ is a futures library for network requests (or whatever), RAC probably does too much for you.
+^ Still, I agree: if _all you want_ is a futures library for, e.g., network requests, RAC probably does too much for you.
 
 ---
 
@@ -71,24 +71,24 @@
 # [fit] unify all of these patterns
 # (and more)
 
-^ The real power of ReactiveCocoa is that it unifies _all_ of these things into one cohesive, internally consistent paradigm.
+^ The real power of RAC is that it unifies _all_ these things into one cohesive paradigm.
 
-^ KVO, bindings, futures, delegates, timers, input/output, etc. are all just _signals_. We have all of these different ways to represent changes or events over time, which can now be subsumed into this one concept.
+^ KVO, bindings, futures, delegates, timers, input/output… are all just _signals_. We have all of these different ways to represent events over time, which can now be subsumed into this one concept.
 
-^ And unlike most of those patterns, the "over time" nature of signals is very clear, which allows _time itself_ to be operated upon (for example, with operators that delay or throttle by a time interval). It's beautiful.
+^ And unlike those patterns, the "over time" nature of signals is very clear. In RAC, _time itself_ can be incorporated—for example, it’s trivial to delay or throttle events to a certain interval.
 
 ---
 
 # [fit] **Problems**
 # [fit] with ReactiveCocoa 2
 
-^ Before we could even start work on ReactiveCocoa 3, we had to identify the biggest problems in version 2 that needed fixing.
+^ With that in mind, let’s talk about some of the downsides that we’ve seen with ReactiveCocoa in version 2, and then we’ll go over how those have been addressed in RAC 3.
 
 ---
 
 ![](Resources/whats-in-the-box.jpg)
 
-^ First and foremost is the lack of type information. RAC 2, being written in Objective-C, just has this one `RACSignal` type, and you can never tell what kind of values it's going to send—just like `NSArray` or `NSDictionary`.
+^ First and foremost is the lack of type information. RAC 2 just has this one `RACSignal` type, and you can never tell what kind of values it's going to send—just like `NSArray` or `NSDictionary` before generics.
 
 ^ This has probably been responsible for more bugs than anything else in RAC.
 
@@ -96,13 +96,13 @@
 
 ![fill](Resources/hot-n-cold.jpg)
 
-^ Chances are, if you've heard signals referred to as "hot" or "cold," it was probably extraordinarily confusing. The difference between these terms is how the signal behaves when you "subscribe" (attach) to it.
+^ If you've heard of "hot" or "cold" signals, it was probably very confusing. The difference is how the signal behaves when you "subscribe" (attach) to it.
 
-^ A "hot" signal always sends the exact same events to all of its subscribers at the same time. When you "subscribe," you're really just observing this existing event stream, and your subscription to it doesn't start or stop it. For example, button taps are a hot signal, because the button will generate events whether you're listening or not.
+^ A "hot" signal sends the same events to all of its subscribers at the same time. When you "subscribe," you're just observing an existing event stream, and your subscription doesn't start or stop it. For example, button taps are a "hot" signal, because the button will generate events regardless if you're listening.
 
-^ A "cold" signal _starts_ when subscribed to, and may send different events each time. This one is more like a future or a promise, because you can run it to do some work and receive a result.
+^ A "cold" signal _starts_ when subscribed to, and may send different events each time. This is more like a future or a promise, because you can run it to do some work and receive the results.
 
-^ The problem in ReactiveCocoa 2 is that _you can't tell these apart_. Unless a method or property's documentation calls out which kind of signal it creates, you really have no idea whether your subscription will have side effects or not.
+^ The problem in RAC 2 is that _you can't tell these apart_. Unless documentation explains which kind of signal you have, you have no idea whether your subscription will have side effects or not.
 
 ---
 
@@ -110,7 +110,7 @@
 # [fit] Multicasting
 # [fit] Replaying
 
-^ I ran out of good images here.
+^ (I ran out of good images here.)
 
 ^ These are some examples of how Rx implementations "solve" the problem of hot and cold signals. I won't go into too much detail about each, but suffice it to say that they allow you to convert between hot/cold signals, or even split the difference and create a "warm" signal.
 
@@ -120,18 +120,18 @@
 
 # [fit] `RACCommand`
 
-^ I'm not sure how many people use `RACCommand`, but if you have, you're probably well-aware of how much trouble it can be.
+^ I'm not sure how many people use `RACCommand`, but if you have, you're probably aware of how much trouble it can be.
 
-^ Commands are intended to trigger work (like a network request) when an action is taken in the UI, then send any results as a signal. They're really useful in bindings, because you can set a command on a UI control just like you would set its target and action, and then observe the command elsewhere to obtain the results.
+^ Commands are used to trigger work (like a network request) upon a UI action, then send any results as a signal. They're useful in bindings, because you can set a command on a UI control just like you would set up target/action, and then observe the command elsewhere to see the results.
 
-^ Unfortunately, they're also overcomplicated, with a rarely-used concurrent execution feature, confusing error handling, and a dependency upon the main thread (which makes unit testing especially hard).
+^ Unfortunately, they're overcomplicated, with concurrent execution feature (rarely used), confusing error handling, and a coupling to the main thread (which makes testing hard).
 
 ---
 
 > ReactiveCocoa has **too much magic**!
 -- the internet
 
-^ Finally, the most abstract complaint we hear is that RAC is simply "too magical," what with its macros and KVO and… that's it, I guess?
+^ Finally, the most abstract complaint we hear is that RAC is simply "too magical," what with its macros and its KVO.
 
 ^ Although we've always offered "non-magical" ways to do the same thing, this has been a turnoff for potential users, so it is a problem for adoption.
 
@@ -154,7 +154,7 @@
 
 # [fit] No **macros**
 
-^ Swift currently has no metaprogramming facilities. So even if we wanted to, we couldn't continue using things like macros to make the framework easier to use.
+^ Swift currently has no metaprogramming facilities. So even if we're trying to make the framework easier to use, we can't continue using macros to do so.
 
 ^ Problem… solved… I guess?
 
@@ -171,6 +171,8 @@
 # [fit] :tada: **ReactiveCocoa 3** :tada:
 
 ^ After Swift was released, we feverishly started work on a Swift API for ReactiveCocoa. With enough time, and a few major rewrites, this developed into the RAC 3 beta that's available today.
+
+^ Here are some highlights.
 
 ---
 
@@ -189,9 +191,9 @@
 
 # [fit] `Signal<Int, NoError>`
 
-^ This is a signal which will send zero or more integers. This signal _cannot_ error, and trying to do so is a compile-time error!
+^ This is a signal which will send zero or more integers. This signal _cannot_ error, and trying to send one is a compile-time error!
 
-^ `NoError` is useful for guaranteeing that you don't need to handle error events in certain cases (like property binding).
+^ `NoError` is useful for guaranteeing that error events will never arrive. This is helpful in property bindings, which should never error out.
 
 ---
 
@@ -199,13 +201,13 @@
 # and
 # [fit] **Signal Producers**
 
-^ RAC 3 splits the venerable `RACSignal` into two different types:
+^ RAC 3 splits `RACSignal` into two types:
 
-^ Signals are like a "hot" RACSignal. They send the same events to all observers at the same time, and observing a signal doesn't trigger any extra work.
+^ Signals are like "hot" RACSignals. They send the same events to all observers at the same time. Observing a signal doesn't start work.
 
-^ Signal producers are like a "cold" RACSignal. _Starting_ signal producer will create a unique signal, which may send different events than other created signals. Starting a signal producer may also involve side effects (like kicking off a network request).
+^ Signal producers are like "cold" RACSignals. _Starting_ a signal producer will create a new signal, which may send different events than other created signals. Starting a signal producer may also involve side effects (like starting a network request).
 
-^ This split means that side effects are now predictable _in the type system_, which makes RAC 3 code simpler.
+^ This split means effects are now predictable _in the type system_, simplifying code.
 
 ---
 
@@ -280,7 +282,7 @@ searchCatsProducer.start()
 
 ^ Here's a contrived example of creating, observing, and starting an action.
 
-^ As you can see, it's ultimately just a wrapper around SignalProducers that enforces serial execution and allows you to observe the values "from the outside."
+^ As you can see here at the end, actions are ultimately just a wrapper around signal producers that enforce serial execution and allow you to observe the values "from the outside."
 
 ---
 
@@ -304,7 +306,7 @@ text <~ timer(1, onScheduler: QueueScheduler())
         |> map { counter in String(counter) }
 ```
 
-^ This example creates a counter that increments itself every second. We observe the changes and log every value of the property to the console.
+^ This example creates a counter property that gets incremented every second. We observe the changes and log each value of the property to the console.
 
 ---
 
@@ -323,7 +325,7 @@ text <~ timer(1, onScheduler: QueueScheduler())
 
 [^1]: See Rich Hickey’s talk, “[Simple Made Easy](http://www.infoq.com/presentations/Simple-Made-Easy)”
 
-^ To talk about simplicity, we first need to talk about ease. Something is _easy_ if it is familiar or approachable.
+^ I find it helpful to discuss simplicity in the context of what makes things easy. Something is _easy_ if it is familiar or approachable.
 
 ^ Objective-C is _easy_ for most C programmers, because it's a very approachable step upward. Bindings and (to some extent) futures are also _easy_.
 
@@ -335,9 +337,11 @@ text <~ timer(1, onScheduler: QueueScheduler())
 
 ![autoplay right](Resources/decomplect-it.gif)
 
-^ But simplicity means something different. Simplicity is the _opposite_ of complexity. Since complexity means intertwined concepts or concerns, you attain simplicity when you appropriately separate different concepts or concerns.
+^ But simplicity means something different. Simplicity is the _opposite_ of complexity.
 
-^ The "Unix philosophy" is an example of simplicity: tons of small utilities that can be composed together in whichever way, sometimes less _easy_ because the pattern isn't as familiar.
+^ Since complexity means intertwined concepts or concerns, you attain simplicity when you appropriately separate different concepts or concerns. It's like that saying: "different things should be different."
+
+^ The "Unix philosophy" is an example of simplicity: tons of small utilities that can be composed together in whichever way. It doesn't necessarily have to be easy (familiar or approachable) to be simple.
 
 ---
 
@@ -346,26 +350,28 @@ text <~ timer(1, onScheduler: QueueScheduler())
 # nor
 # [fit] **simple**
 
-^ Unfortunately, RAC version 2 kinda failed on both of these counts. While we certianly tried to make it as easy as possible, there's still a really steep learning curve, and the patterns are very unfamiliar to many Cocoa programmers.
+^ Unfortunately, RAC version 2 kinda failed on both of these counts.
 
-^ It's also not simple. All of the problems that I mentioned earlier are examples of complexity that RAC 2 is exposing.
+^ Although we certainly tried to make it as easy as possible, there's still a really steep learning curve, and the patterns are very unfamiliar to many Cocoa programmers.
+
+^ It's also not simple. All of the problems that I mentioned earlier are examples of the complexity that RAC 2 is exposing.
 
 ---
 
-# [fit] ReactiveCocoa 3 is
+# [fit] ReactiveCocoa 3 _is_
 # [fit] **simple**
 # (hopefully)
 
 ^ Our fixes for RAC 3 have focused primarily on simplicity.
 
-^ There will still be a learning curve (and thus it may still not be "easy"), partly because the paradigm is inherently so different from what we're used to, but hopefully the complexities of version 2 have been eliminated.
+^ There will still be a learning curve (so it may still be hard at first), partly because the paradigm is inherently so different from what we're used to, but hopefully the complexities of version 2 have been eliminated.
 
 ---
 
 > Dr. **Changelog**, MD
 -- @joshaber
 
-^ If you want to learn more, the [ReactiveCocoa repository](https://github.com/ReactiveCocoa/ReactiveCocoa) contains a [CHANGELOG.md](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/ad1fd34561d3f2f42e0feb420ace5de321906b78/CHANGELOG.md) file at its root, which details all of these changes (and some others I haven't covered), and presents a more in-depth rationale for each one.
+^ If you want to learn more, the [ReactiveCocoa repository](https://github.com/ReactiveCocoa/ReactiveCocoa) contains a [CHANGELOG.md](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/ad1fd34561d3f2f42e0feb420ace5de321906b78/CHANGELOG.md) file at its root, which details all of these changes (and some others I didn't cover), and presents a more in-depth rationale for each one.
 
 ---
 
@@ -373,7 +379,7 @@ text <~ timer(1, onScheduler: QueueScheduler())
 
 - **Long-form documentation**
 
-^ That's it! That's really the only major piece we have to take care of before RAC can officially release 3.0. It should be pretty soon now!
+^ As for when we can officially release 3.0, this is really the only major piece of work we have to finish first. It should be pretty soon now!
 
 ^ Note that 3.0 may not contain Swift versions of our UIKit and AppKit extensionsupon release, since those can come later. However, if there's a particular one you want, please submit a pull request and we'd be happy to include it!
 
@@ -400,10 +406,10 @@ text <~ timer(1, onScheduler: QueueScheduler())
 # [fit] **Interested in contributing?**
 # [fit] Join Slack by emailing justin@jspahrsummers.com
 
-^ If any of you are interested in contributing as well, in any capacity, we'd more than welcome the help! Anything is valuable, including bug fixes, documentation help, answering issues and questions from others, etc.
+^ If any of you are interested in contributing, in any capacity, we'd welcome the help! Anything is valuable—including bug fixes, documentation help, and responding to issues and questions from others.
 
-^ If you're unsure how best to contribute, or would just like to chat with other
-collaborators, we're happy to add you to our Slack channel. Just email me (at
-this address here), and I'll send you an invite.
+^ If you're unsure how to contribute, or would like to chat with other
+collaborators, we're happy to add you to our Slack channel. Just email me at
+this address, and I'll send you an invite.
 
 ^ Thanks everyone!
