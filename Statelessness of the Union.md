@@ -69,7 +69,7 @@
 
 # [fit] **Signals**
 # [fit] unify all of these patterns
-# (and more)
+# _(and more)_
 
 ^ The real power of RAC is that it unifies _all_ these things into one cohesive paradigm.
 
